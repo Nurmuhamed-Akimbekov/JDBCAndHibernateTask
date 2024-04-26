@@ -4,19 +4,19 @@ import org.junit.Assert;
 import org.junit.Test;
 import peaksoft.model.User;
 import peaksoft.service.UserService;
-import peaksoft.service.UserServiceImpl;
+import peaksoft.service.UserServiceJdbcImpl;
 
 import java.util.List;
 
 public class UserServiceTest {
 
-    private final UserService userService = new UserServiceImpl();
+    private final UserService userService = new UserServiceJdbcImpl();
 
     private final String testName = "Kanat";
     private final String testLastName = "Subanov";
     private final byte testAge = 23;
 
-    @Test
+@Test
     public void dropUsersTable() {
         try {
             userService.dropUsersTable();
