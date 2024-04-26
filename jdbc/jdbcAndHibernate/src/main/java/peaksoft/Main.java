@@ -1,43 +1,35 @@
 package peaksoft;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import peaksoft.service.UserService;
-import peaksoft.service.UserServiceHibernateImpl;
-import peaksoft.service.UserServiceJdbcImpl;
+import peaksoft.service.serviceImpl.UserServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
         // реализуйте алгоритм здесь
-//          Session session = HibernateConfig.getSession().openSession();
-//         Transaction transaction = session.beginTransaction();
-//         transaction.commit();
-//         session.close();
+UserService userService = new UserServiceImpl();
 
-         UserService userServiceHibernate = new UserServiceHibernateImpl();
-//         userServiceHibernate.saveUser("Ali", "Kaldarbekov", (byte) 21);
-//         System.out.println(userServiceHibernate.getAllUsers());
-//         userServiceHibernate.removeUserById(1L);
-//         userServiceHibernate.dropUsersTable();
-//        userServiceHibernate.cleanUsersTable();
+//         userService.saveUser("Nurmukhamed", "Akimbekov", (byte) 24);
+//         System.out.println(userService.getAllUsers());
+//         userService.removeUserById(1L);
+//         userService.dropUsersTable();
+//        userService.cleanUsersTable();
 
 
 
 
-            UserService userService = new UserServiceJdbcImpl();
-//        System.out.println("Create table: ");
+        System.out.println("Create table: ");
 //        userService.createUsersTable();
+
+//         userService.saveUser("Nurmukhmed","Akimbekov", (byte) 21);
+//        userService.saveUser("Asan","Usonov", (byte) 20);
 //
-//         userService.saveUser("Ali","Kaldarbekov", (byte) 21);
-//        userService.saveUser("Suke","Tologonuulu", (byte) 20);
+//         System.out.println(userServiceJdbc.getAllUsers());
 
-        // System.out.println(userServiceJbdc.getAllUsers());
+//         userService.removeUserById(1L);
 
-        // userServiceJbdc.removeUserById(1L);
+//         userService.dropUsersTable();
 
-        // userServiceJbdc.dropUsersTable();
-
-        // userServiceJbdc.cleanUsersTable();
+//         userServiceJdbc.cleanUsersTable();
 
     }
 }

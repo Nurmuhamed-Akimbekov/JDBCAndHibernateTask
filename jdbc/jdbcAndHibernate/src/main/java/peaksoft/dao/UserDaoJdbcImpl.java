@@ -14,16 +14,15 @@ public class UserDaoJdbcImpl implements UserDao {
     }
 
     public void createUsersTable() {
-        String sql = """
-                create table if not exists users(
-                id serial primary key,
-                name varchar,
-                last_name varchar,
-                age int
-                );
-                """;
+
         try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate(sql);
+            statement.executeUpdate("    create table if not exists users(\n" +
+                    "                id serial primary key,\n" +
+                    "                first_name varchar(50),\n" +
+                    "                last_name varchar(50),\n" +
+                    "                age int\n" +
+                    "                );");
+            System.out.println("successfully created");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -40,11 +39,11 @@ public class UserDaoJdbcImpl implements UserDao {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        String sql = "insert into users (name, last_name, age) values (?, ?, ?)";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement
+                ("insert into users (first_name,last_name, age) values (?, ?, ?)")) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
-            preparedStatement.setByte(3, age);
+            preparedStatement.setInt(3, (int)age);
             preparedStatement.executeUpdate();
             System.out.println("save success!");
         } catch (SQLException e) {
@@ -73,7 +72,7 @@ public class UserDaoJdbcImpl implements UserDao {
             while (resultSet.next()) {
                 User user = new User();
                 user.setId(resultSet.getLong("id"));
-                user.setName(resultSet.getString("name"));
+                user.setName(resultSet.getString("first_name"));
                 user.setLastName(resultSet.getString("last_name"));
                 user.setAge(resultSet.getByte("age"));
                 users.add(user);

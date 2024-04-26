@@ -5,8 +5,8 @@ import lombok.*;
 
 
 
-@Entity
-@Table(name = "users")
+//@Entity
+//@Table(name = "users")
 
 @Getter
 @Setter
@@ -14,18 +14,18 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_gen")
-    @SequenceGenerator(name = "user_gen", sequenceName = "user_seq", allocationSize = 1)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_gen")
+//    @SequenceGenerator(name = "user_gen", sequenceName = "user_seq", allocationSize = 1)
     private Long id;
 
-    @Column
+//    @Column
     private String name;
 
-    @Column
+//    @Column
     private String lastName;
 
-    @Column
+//    @Column
     private Byte age;
 
     public User(String name, String lastName, Byte age) {
